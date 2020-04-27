@@ -34,7 +34,7 @@ export default class SingleQuestion extends React.Component {
     }
 
     render() {
-        const { name, question, isRequired, onChange } = this.props;
+        const { name, question, isRequired, isSimpleQ, onChange, children } = this.props;
 
 
         return(
@@ -44,9 +44,13 @@ export default class SingleQuestion extends React.Component {
                         <Grid item xs={12}>
                             <form>
                                 { isRequired ? <Typography variant="p" color="error">This question is required.</Typography> : null }
-                                <Typography variant="h3" gutterBottom>
-                                    Q: {question}
-                                </Typography>
+                                { isSimpleQ ? 
+                                    <Typography variant="h3" gutterBottom>
+                                        Q: {question}
+                                    </Typography> :
+                                    <Typography variant="h4" gutterBottom>
+                                        Q: {children}
+                                    </Typography>}
                                 <TextField
                                     id="standard-multiline-flexible"
                                     label="Answer"
@@ -70,5 +74,6 @@ SingleQuestion.propTypes = {
     name: PropTypes.string,
     question: PropTypes.string,
     isRequired: PropTypes.bool,
+    isSimpleQ: PropTypes.bool,
     onChange: PropTypes.func,
 }
