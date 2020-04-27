@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 
 // custom component
 import SingleQuestion from '../../components/SingleQuestion';
@@ -84,6 +85,10 @@ export default class QuestionPage extends React.Component {
                     </SingleQuestion>
                     <SingleQuestion name="q4" question="List the people you interacted with today?" isRequired={true} isSimpleQ={true} onChange={this.handleChange}/>
                     <SingleQuestion name="q5" question="List the place and time of your visits?" isRequired={true} isSimpleQ={true} onChange={this.handleChange}/>
+                    {/* This is fake submit */}
+                    <Button variant="contained" color="primary" onClick={() => alert("Your answer submitted!")}>
+                        Submit
+                    </Button>
                 </Grid>
                 <br/>
 
